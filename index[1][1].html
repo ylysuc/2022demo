@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0 "> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: face;
+            src: url(./consola.ttf);
+        }
+
+        p {
+            font-size: 22px;
+
+        }
+
+        html,
+        body {
+            font-family: face;
+        }
+
+        input {
+            outline: none;
+        }
+
+        button {
+            border: 0.2px solid #333;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .msg {
+            position: absolute;
+            bottom: 12vh;
+            left: 50vw;
+            /* background-color: orange; */
+            width: 90vw;
+            height: 30px;
+            margin: 20px auto;
+            margin-left: -45vw;
+            /* background-color: orange; */
+            margin-bottom: 5px;
+        }
+
+        input {
+            border: 0.2px solid #333;
+            list-style: none;
+        }
+
+        .msg ul li {
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            line-height: 30px;
+        }
+
+        .msg ul li:last-child {
+            float: right;
+        }
+
+        /* .inP {
+            position: absolute;
+            width: 90vw;
+            background-color: pink;
+            margin: 0px auto;
+            bottom: 0vh;
+        }
+
+        .inP ul li {
+            width: 100%;
+            background-color: blue;
+        }
+
+        .inP ul li input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 70px;
+            font-size: 60px;
+        }
+
+        .inP ul li:last-child {
+            position: absolute;
+            left: -20px;
+            bottom: -160px;
+            width: 375px;
+        }
+
+        .inP ul li:last-child input {
+            float: right;
+            width: 78%;
+            height: 50px;
+
+        }
+
+        .inP ul li:first-child {
+            position: absolute;
+            box-sizing: 2;
+            bottom: -18px;
+            background-color: orange;
+
+        }
+
+        .inP ul li:last-child button {
+            display: block;
+            float: left;
+            width: 22%;
+            height: 50px;
+
+        } */
+        .inP {
+            position: fixed;
+            bottom: 0;
+            width: 100vw;
+            height: 11vh;
+            z-index: 3;
+        }
+
+        .inP form {
+            height: 100%;
+        }
+
+        .inP ul {
+            height: 100%;
+        }
+
+        .inP input {
+            font-size: 2.6rem;
+        }
+
+        .inP ul li:first-child {
+            box-sizing: border-box;
+            float: left;
+            width: 20vw;
+            height: 100%;
+        }
+
+        .inP ul li:first-child button {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+
+        .pinputli {
+            float: left;
+            width: 60vw;
+            background-color: blue;
+            height: 100%;
+            display: none;
+        }
+
+        .pinput {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+
+        .show {
+            display: block;
+        }
+
+        input[name='word2'] {
+            background-color: #eee;
+        }
+
+        input[name='word3'] {
+            background-color: #ddd;
+        }
+
+        .inP ul li:nth-child(6) {
+            float: right;
+            width: 20vw;
+            height: 100%;
+        }
+
+        .inP ul li:nth-child(6) button {
+            display: block;
+            box-sizing: border-box;
+            /* background-color: #4e6ef2; */
+            height: 100%;
+            width: 100%;
+
+        }
+
+        .msgWord {
+
+            overflow: auto;
+            width: 90vw;
+            /* background-color: pink; */
+            margin: 5px auto;
+            height: 350px;
+            border-bottom: 0.2px solid #333;
+            /* height: 50vh; */
+        }
+
+        .msgWord ul li {
+            overflow-y: scroll;
+            font-size: 15px;
+            height: 50px;
+            border: 0.2px solid #333;
+            border-bottom: 0px solid transparent;
+
+        }
+
+        .msgWord ul li span {
+            display: block;
+            float: left;
+            padding: 8px;
+
+
+        }
+
+        .msgWord ul li a {
+            display: block;
+            float: left;
+            padding: 5px;
+            text-decoration: none;
+            line-height: 28px;
+            color: #434343;
+
+        }
+
+        .msgWord ul li span:nth-child(5) {
+            display: none;
+        }
+
+        .msgWord ul li span:nth-child(6) {
+            display: none;
+        }
+
+        .msgWord ul li span:nth-child(1) {
+            border-radius: 20px;
+            width: 10vw;
+            height: 38px;
+            background-color: #4e6ef2;
+            margin-top: 2px;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            font-size: 26px;
+        }
+
+        .msgWord .numId {
+            font-size: 20px !important;
+        }
+
+        .addWord {
+            width: 300px;
+            margin: 0px auto;
+            margin-top: 52px;
+        }
+
+        .addWord ul li input {
+            box-sizing: border-box;
+            margin: 0px auto;
+            width: 100%;
+            height: 35px;
+            font-size: 25px;
+        }
+
+        .addWord ul li input[type='submit'] {
+            float: right;
+            width: 48%;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .addWord ul li button {
+            float: left;
+            width: 48%;
+            height: 35px;
+            margin-top: 10px;
+        }
+
+        .addWord ul li .indexP {
+            float: left;
+            width: 48%;
+            margin-top: 10px;
+        }
+
+        .addWord ul li .start {
+            float: right;
+            width: 48%;
+            height: 35px;
+            margin-top: 10px;
+        }
+
+        .floot {
+            width: 30px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body onload="let firstInput=document.getElementById('first');firstInput.focus()">
+    <div class="msg">
+        <ul>
+            <!-- <li>submit</li>
+            <li>document</li>
+            <li>onload</li>
+            <li>126</li> -->
+        </ul>
+    </div>
+    <!-- 判断单词输入 -->
+    <div class="inP">
+        <form action="javascript:;">
+            <ul>
+                <li><button class="xItem">下一项</button></li>
+                <li class="pinputli show"><input type="text" id="first" class="pinput" name="word1" autocomplete="off">
+                </li>
+                <li class="pinputli"><input type="text" class="pinput" name="word2" autocomplete="off"></li>
+                <li class="pinputli"><input type="text" class="pinput " name="word3" autocomplete="off"></li>
+                <li id="lastPli" class="pinputli"><input type="submit" class="spinput" value=""></li>
+                <li><button class="xItem">下一项</button></li>
+            </ul>
+        </form>
+    </div>
+    <!-- 单词列表 -->
+    <div class="msgWord">
+
+        <ul>
+            <!-- <li>
+                <span>1</span>
+                <span>autocomplete</span>
+                <span>autocomplete</span>
+                <span>autocomplete</span>
+                <span>/5/202227</span>
+                <span>/5/202227</span>
+                <span>23</span>
+                <span>2</span>
+                <a href="javascript:;">删除</a>
+            </li> -->
+        </ul>
+
+    </div>
+    <!-- 添加列表 -->
+    <div class="addWord">
+        <form action="javascript:;">
+            <ul>
+                <li><input type="text" class="addInput" name="aword1" autocomplete="off"></li>
+                <li><input type="text" class="addInput" name="aword2" autocomplete="off"></li>
+                <li><input type="text" class="addInput" name="aword3" autocomplete="off"></li>
+                <li>
+                    <input type="submit" class="addSubmit" value="添加">
+                    <button class="queryWord">查看</button>
+                </li>
+                <li>
+                    <input type="number" min="1" class="indexP" value="添加">
+                    <button class="start">开始</button>
+                </li>
+
+            </ul>
+        </form>
+    </div>
+    <div class="floot"></div>
+    <script>
+        let msgUl = document.querySelector('.msg ul')
+        let word = document.querySelectorAll('.pinput')
+        let addWord = document.querySelectorAll('.addInput')
+        let submit = document.querySelector('.spinput')
+        let xItem = document.querySelectorAll('.xItem')//下一项
+        let addSubmit = document.querySelector('.addSubmit')
+        let queryWord = document.querySelector(".queryWord")//查看所有单词
+        let msgWord = document.querySelector('.msgWord ul')//显示单词列表
+        let startBtn = document.querySelector('.start')
+        let indexInput = document.querySelector('.indexP')
+        let indexP = 0;
+        let jnum = 0;
+        let d = (new Date).toLocaleString();
+        let xItemName = 'word1'
+        let arrWord = [{ id: 1, word1: 'submit', word2: 'create', word3: 'viewport', addDate: d, lastDate: d, countItem: 0, numJ: 0 }]
+
+        //添加单词
+        addSubmit.addEventListener('click', function () {
+            if ((addWord[0].value.trim()) || (addWord[1].value.trim()) || (addWord[2].value.trim())) {
+                arrWord.push({
+                    id: arrWord[arrWord.length - 1].id + 1,
+                    word1: addWord[0].value.trim(),
+                    word2: addWord[1].value.trim(),
+                    word3: addWord[2].value.trim(),
+                    addDate: d,
+                    lastDate: d,
+                    countItem: 0,
+                    numJ: 0
+                })
+                localStorage.setItem("wordList", JSON.stringify(arrWord))
+                for (let i = 0; i < addWord.length; i++) {
+                    addWord[i].value = ''
+                }
+                cerateInfoWord()
+            } else {
+                alert('还没填单词呀')
+            }
+        })
+        //删除单词
+        msgWord.addEventListener('click', function (e) {
+
+            if (e.srcElement.nodeName === 'A') {
+                let getJson = localStorage.getItem('wordList')
+                if (getJson) {
+                    arrWord = JSON.parse(getJson)
+                }
+                let deleIndex = e.srcElement.attributes['data-Index'].nodeValue * 1
+                if (deleIndex === 0) {
+                    alert('这不给你删')
+                } else {
+                    arrWord.splice(deleIndex, 1)
+                    localStorage.setItem("wordList", JSON.stringify(arrWord))
+                    cerateInfoWord()
+                }
+
+            }
+
+        })
+        //查看单词
+        queryWord.addEventListener('click', function () {
+            cerateInfoWord();
+        })
+        //设置下一项或得焦点
+        xItem[0].addEventListener('click', xItemFu)
+        xItem[1].addEventListener('click', xItemFu)
+        function xItemFu() {
+            let pinputli = document.querySelectorAll('.pinputli')
+            if (xItemName === 'word1') {
+                document.querySelector('.show').classList.remove('show')
+                pinputli[1].classList.add('show')
+                word[1].focus()
+            } else if (xItemName === 'word2') {
+                document.querySelector('.show').classList.remove('show')
+                pinputli[2].classList.add('show')
+                word[2].focus()
+            } else {
+                document.querySelector('.show').classList.remove('show')
+                pinputli[0].classList.add('show')
+                submit.click()
+                // word[0].focus()
+            }
+
+        }
+        //添加input失去焦点事件
+        for (let i = 0; i < word.length; i++) {
+            word[i].addEventListener('blur', function (e) {
+                xItemName = e.srcElement.name
+
+            })
+        }
+        //获取要判断的单词下标
+        startBtn.addEventListener('click', function () {
+            indexP = (indexInput.value * 1) - 1
+            // console.log(indexP);
+        })
+        // 判断单词提交事件下一项或得焦点
+        submit.addEventListener('click', function () {
+            let errArrWord = ['', '', '']
+
+            if (indexP >= arrWord.length) {
+                indexP = 0;
+            }
+            if (word[0].value.trim() !== arrWord[indexP].word1) {
+                errArrWord[0] = word[0].value + ' '
+            }
+            if (word[1].value.trim() !== arrWord[indexP].word2) {
+                errArrWord[1] = word[1].value + ' '
+            }
+            if (word[2].value.trim() !== arrWord[indexP].word3) {
+                errArrWord[2] = word[2].value + ' '
+            }
+            if (!errArrWord[0] && !errArrWord[1] && !errArrWord[2]) {
+                arrWord[indexP].numJ++
+                arrWord[indexP].lastDate = d
+                console.log(arrWord[indexP].numJ)
+            }
+            if (arrWord[indexP].numJ > 115) {
+                jnum = arrWord[indexP].numJ
+                arrWord[indexP].countItem++
+                arrWord[indexP].numJ = 0
+            }
+
+            msgUl.innerHTML = ''
+            let msgStr = `
+            <li>${errArrWord[0]}</li>
+            <li>${errArrWord[1]}</li>
+            <li>${errArrWord[2]}</li>
+            <li>${jnum > 10 ? jnum : ''}</li >
+        `
+            msgUl.innerHTML = msgStr;
+            if (jnum > 115) {
+                jnum++
+            }
+            // msg.innerHTML = word3
+            // word1.foucs()     
+            localStorage.setItem("wordList", JSON.stringify(arrWord))
+            for (let i = 0; i < word.length; i++) {
+                word[i].value = ''
+            }
+
+            word[0].focus()
+
+        })
+        //渲染单词列表
+        function cerateInfoWord() {
+            let getJson = localStorage.getItem('wordList')
+            let addClassStr = 'class= "numId"'
+            if (getJson) {
+                arrWord = JSON.parse(getJson)
+            }
+            msgWord.innerHTML = ''
+            for (let i = 0; i < arrWord.length; i++) {
+                let li = document.createElement('li')
+                li.innerHTML = `
+                <span ${arrWord[i].id >= 10 ? addClassStr : ''}>${arrWord[i].id}</span>
+                <span><h4>${arrWord[i].word1}</h4></span>
+                <span><h4>${arrWord[i].word2}</h4></span>
+                <span><h4>${arrWord[i].word3}</h4></span>
+                <span>${arrWord[i].addDate}</span>
+                <span>${arrWord[i].lastDate}</span>
+                <span>${arrWord[i].countItem}</span>
+                <span>${arrWord[i].numJ}</span>
+                <a href="javascript:;" data-Index="${i}">删除</a>
+            `
+                msgWord.appendChild(li)
+            }
+        }
+        cerateInfoWord();
+    </script>
+</body>
+
+</html>
